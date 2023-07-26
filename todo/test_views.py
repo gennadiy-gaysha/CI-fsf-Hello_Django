@@ -13,10 +13,11 @@ from .models import Item
 # specific data and behavior.
 
 # Create your tests here.
+# ===========================================================================
 # We want to test not only that our views return a successful HTTP response
 # and that they're using the proper templates, but also what they can do,
 # specifically adding toggling and deleting items.
-
+# ===========================================================================
 
 class TestViews(TestCase):
     # the test client sends a GET request to the root URL (/).
@@ -74,7 +75,7 @@ class TestViews(TestCase):
         # status code is a redirect status code (e.g., 301 or 302) and if the
         # response "Location" header matches the expected redirect URL ("/").
         self.assertRedirects(response, "/")
-        print(response.status_code) # 302
+        # print(response.status_code) # 302
     # ========================================================================
 
     # ========================================================================
@@ -102,6 +103,6 @@ class TestViews(TestCase):
         # request.
         response = self.client.get(f'/delete/{item.id}')
         self.assertRedirects(response, '/') # gives us status_code 302
-        print(response.status_code)  # 302
+        # print(response.status_code)  # 302
         existing_items = Item.objects.filter(id=item.id)
         self.assertEqual(len(existing_items), 0)
