@@ -30,6 +30,8 @@ urlpatterns = [
     # URL "edit/42", the item_id parameter in the view function will be
     # assigned the value "42".
     path("edit/<item_id>", views.edit_item, name="edit"),
+    # inputting this path triggers the view toggle_item and changes
+    # item.done to opposite value
     path("toggle/<item_id>", views.toggle_item, name="toggle"),
     path("delete/<item_id>", views.delete_item, name="delete")
 ]
