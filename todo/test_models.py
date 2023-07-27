@@ -7,3 +7,11 @@ class TestModels(TestCase):
     def test_done_defaults_to_false(self):
         item = Item.objects.create(name="Test Todo Item")
         self.assertFalse(item.done)
+
+    def test_item_string_method_return_name(self):
+        item = Item.objects.create(name="Test Todo Item")
+        # self.assertEqual(bool(item), False)
+        # print(item.name)
+        #  By defining the __str__ method, you control how instances of the
+        #  Item model are displayed when printed or converted to a string
+        self.assertEqual(str(item), "Test Todo Item")

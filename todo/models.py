@@ -20,5 +20,7 @@ class Item(models.Model):
     name = models.CharField(max_length=50, null=False, blank=False)
     done = models.BooleanField(null=False, blank=False, default=False)
 # This will change how our items are displayed (in Admin panel etc.)
+#     def __bool__(self):
+#         return self.done
     def __str__(self):
         return self.name
