@@ -1,2 +1,4 @@
 django_todo/.env
 deployment.txt
+*.sqlite3
+__pycache__/
