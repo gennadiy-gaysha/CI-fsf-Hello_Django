@@ -83,11 +83,18 @@ WSGI_APPLICATION = 'django_todo.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
+# ==========================================
+# Local database connection:
 # DATABASES = {
 #     'default': {
-#         # 'ENGINE': 'django.db.backends.sqlite3',
-#         # 'NAME': BASE_DIR / 'db.sqlite3',
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+# ==========================================
+# Railway database connection:
+# DATABASES = {
+#     'default': {
 #     'ENGINE': 'django.db.backends.postgresql',
 #     'NAME': 'railway',
 #     'USER':'postgres',
@@ -96,25 +103,23 @@ WSGI_APPLICATION = 'django_todo.wsgi.application'
 #     'PORT': 6673
 #     }
 # }
-
 # ==========================================
-DATABASES = {
-    'default': {
-        # 'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': BASE_DIR / 'db.sqlite3',
-    'ENGINE': 'django.db.backends.postgresql',
-    'NAME': 'igjcabba',
-    'USER':'igjcabba',
-    'PASSWORD':'xySlEv2lN3u1QuftMD0LYn3mB0nh1EFu',
-    'HOST':'kandula.db.elephantsql.com',
-    'PORT': 5432
-    }
-}
-# ==========================================
-
+# ElephantSQL connection
 # DATABASES = {
-#     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'igjcabba',
+#         'USER': 'igjcabba',
+#         'PASSWORD': 'xySlEv2lN3u1QuftMD0LYn3mB0nh1EFu',
+#         'HOST': 'kandula.db.elephantsql.com',
+#         'PORT': 5432
+#     }
 # }
+# ==========================================
+# ElephantSQL connection with hiding sensitive data in .env file
+DATABASES = {
+    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+}
 
 
 # Password validation
