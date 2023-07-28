@@ -16,6 +16,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 import dj_database_url
 
+
 # Load environment variables from .env file
 load_dotenv()
 
@@ -85,14 +86,35 @@ WSGI_APPLICATION = 'django_todo.wsgi.application'
 
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
+#         # 'ENGINE': 'django.db.backends.sqlite3',
+#         # 'NAME': BASE_DIR / 'db.sqlite3',
+#     'ENGINE': 'django.db.backends.postgresql',
+#     'NAME': 'railway',
+#     'USER':'postgres',
+#     'PASSWORD':'R058YUKwjVnK1EuYrhJI',
+#     'HOST':'containers-us-west-189.railway.app',
+#     'PORT': 6673
 #     }
 # }
 
+# ==========================================
 DATABASES = {
-    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+    'default': {
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
+    'ENGINE': 'django.db.backends.postgresql',
+    'NAME': 'igjcabba',
+    'USER':'igjcabba',
+    'PASSWORD':'xySlEv2lN3u1QuftMD0LYn3mB0nh1EFu',
+    'HOST':'kandula.db.elephantsql.com',
+    'PORT': 5432
+    }
 }
+# ==========================================
+
+# DATABASES = {
+#     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+# }
 
 
 # Password validation
