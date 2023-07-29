@@ -18,6 +18,8 @@ from dotenv import load_dotenv
 import dj_database_url
 
 
+development = os.environ.get("DEVELOPMENT", False)
+
 # Load environment variables from .env file
 load_dotenv()
 
@@ -34,11 +36,15 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+DEBUG = development
 
-ALLOWED_HOSTS = [
-    "django-todo-app-gaysha-365dc543cd18.herokuapp.com", "127.0.0.1"]
-
+# ALLOWED_HOSTS = [
+#     "django-todo-app-gaysha-365dc543cd18.herokuapp.com", "127.0.0.1"]
+if development:
+    ALLOWED_HOSTS = ["127.0.0.1"]
+else:
+    ALLOWED_HOSTS = ["django-todo-app-gaysha-365dc543cd18.herokuapp.com"]
 
 # Application definition
 
@@ -87,10 +93,29 @@ WSGI_APPLICATION = 'django_todo.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 # ==========================================
 # Local database connection:
+if development:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+else:
+    # ==========================================
+    # ElephantSQL connection with hiding sensitive data in .env file
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+    }
+# ==========================================
+# ElephantSQL connection
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'igjcabba',
+#         'USER': 'igjcabba',
+#         'PASSWORD': 'xySlEv2lN3u1QuftMD0LYn3mB0nh1EFu',
+#         'HOST': 'kandula.db.elephantsql.com',
+#         'PORT': 5432
 #     }
 # }
 # ==========================================
@@ -105,23 +130,6 @@ WSGI_APPLICATION = 'django_todo.wsgi.application'
 #         'PORT': 6673
 #     }
 # }
-# ==========================================
-# ElephantSQL connection
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'igjcabba',
-#         'USER': 'igjcabba',
-#         'PASSWORD': 'xySlEv2lN3u1QuftMD0LYn3mB0nh1EFu',
-#         'HOST': 'kandula.db.elephantsql.com',
-#         'PORT': 5432
-#     }
-# }
-# ==========================================
-# ElephantSQL connection with hiding sensitive data in .env file
-DATABASES = {
-    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
-}
 
 
 # Password validation
