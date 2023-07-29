@@ -1,0 +1,32 @@
+Log in to your Heroku account by running the following command and following the prompts:
+heroku login -i
+
+Once you are logged in, use the following command to view the environment variables for your app:
+heroku config --app your-app-name
+(heroku config --app django-todo-app-gaysha)
+Replace your-app-name with the actual name of your Django app on Heroku
+(in this case, it's django-todo-app-gaysha)
+
+If running scripts is disabled on your system, which is preventing the execution of the Heroku CLI
+command. This is a security measure to prevent unauthorized scripts from running on your machine.
+To resolve this, follow these steps:
+- Close the current PowerShell window.
+- Search for "Windows PowerShell" in the Start menu.
+- Right-click on "Windows PowerShell" in the search results.
+- Select "Run as administrator" from the context menu. This will open a new PowerShell window with administrative
+  privileges.
+- In the new PowerShell window with administrative privileges, try setting the execution policy again:
+  Set-ExecutionPolicy RemoteSigned
+- You will be prompted to confirm the change. Type "Y" and press Enter.
+Now, you should be able to execute the Heroku CLI command without any issues
+Remember that you can set the execution policy back to its original state after you finish working with Heroku:
+  Set-ExecutionPolicy <original_policy>
+- Replace <original_policy> with the execution policy value you noted before changing it (e.g., "Restricted" or "Unrestricted").
+
+To set the SECRET_KEY configuration variable in your Heroku app you can use the Heroku CLI by running the following command:
+  heroku config:set SECRET_KEY="your_secret_key_here" --app django-todo-app-gaysha
+
+Alternatively, if you still encounter issues, try setting the SECRET_KEY without any special characters. You can generate a new Django secret key without special characters using the following Python command:
+  python -c "import secrets; print(secrets.token_hex(24))"
+This will generate a new random secret key without any special characters. Then, use this generated key to set the SECRET_KEY on Heroku:
+ heroku config:set SECRET_KEY=your_generated_secret_key --app django-todo-app-gaysha

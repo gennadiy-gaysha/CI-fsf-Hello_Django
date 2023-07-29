@@ -1,46 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Add Item</title>
 </head>
-<body>
-<h1>Add a Todo Item</h1>
-<!-- The action attribute specifies the URL or URL path to which the form data -->
-<!--will be submitted when the user clicks the submit button. In this case, the -->
-<!--form data will be sent to the server at the URL or endpoint named "add_item"-->
-<!--!!!view (add_item) and the URL or URL path where the form data will be submitted -->
-<!--are effectively the same-->
-<form method="post" action="add_item">
-<!--Just inside the opening form tag whenever we're posting information in Django.-->
-<!--We need to add the CSRF or cross-site request forgery token.-->
-<!--This token is a randomly generated unique value which will be added-->
-<!--to the form as a hidden input field when the forms submitted.-->
-<!--And works to guarantee that the data we're posting is actually coming from our-->
-<!--todo list app and not from another website.-->
-    {% csrf_token %}
-<!--we render form from this variable-->
-    {{ form.as_p }}
-<!--    <div>-->
-<!--        <p>-->
-<!--            <label for="id_name">Name:</label>-->
-<!--            <input type="text" id="id_name" name="item_name">-->
-<!--        </p>-->
-<!--    </div>-->
-<!--    <div>-->
-<!--        <p>-->
-<!--            <label for="id_done">Done:</label>-->
-<!--            <input type="checkbox" name="done" id="id_done">-->
-<!--        </p>-->
-<!--    </div>-->
-    <div>
-        <p>
-            <button type="submit">Add Item</button>
-        </p>
 
-    </div>
-</form>
+<body>
+    <h1>Add a Todo Item</h1>
+    <!-- The action attribute specifies the URL or URL path to which the form data -->
+    <!--will be submitted when the user clicks the submit button. In this case, the -->
+    <!--form data will be sent to the server at the URL or endpoint named "add_item"-->
+    <!--!!!view (add_item) and the URL or URL path where the form data will be submitted -->
+    <!--are effectively the same-->
+    <form method="post" action="add_item">
+        <!--Just inside the opening form tag whenever we're posting information in Django.-->
+        <!--We need to add the CSRF or cross-site request forgery token.-->
+        <!--This token is a randomly generated unique value which will be added-->
+        <!--to the form as a hidden input field when the forms submitted.-->
+        <!--And works to guarantee that the data we're posting is actually coming from our-->
+        <!--todo list app and not from another website.-->
+        {% csrf_token %}
+        <!--we render form from this variable-->
+        {{ form.as_p }}
+        <!--    <div>-->
+        <!--        <p>-->
+        <!--            <label for="id_name">Name:</label>-->
+        <!--            <input type="text" id="id_name" name="item_name">-->
+        <!--        </p>-->
+        <!--    </div>-->
+        <!--    <div>-->
+        <!--        <p>-->
+        <!--            <label for="id_done">Done:</label>-->
+        <!--            <input type="checkbox" name="done" id="id_done">-->
+        <!--        </p>-->
+        <!--    </div>-->
+        <div>
+            <p>
+                <button type="submit">Add Item</button>
+            </p>
+
+        </div>
+    </form>
 
 </body>
-</html>
 
+</html>
